@@ -8,6 +8,12 @@ umg=$1
 filter="$ldapattr=cn=$umg,$ldapbase uid"
 today=$(date +%Y%m%d)
 
+if [ "$umg" == "" ]
+then
+  echo "Usage: umg_backup.sh group"
+  exit 99
+fi
+
 ldapsearch $ldapargs $filter | egrep -v '^(dn|$)' | cut -d: -f2 | sed -e 's/^ //' > $(echo $umg | sed -e 's/\//_/g')-$today
 result=$?
 
