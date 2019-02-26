@@ -7,6 +7,7 @@ ldapattr="psMemberOf"
 umg=$1
 filter="$ldapattr=cn=$umg,$ldapbase uid"
 today=$(date +%Y%m%d)
+output="/home/geosc/tjc181/backup/umg/$(echo $umg | sed -e 's/\//_/g')-$today"
 
 if [ "$umg" == "" ]
 then
@@ -15,8 +16,7 @@ then
 fi
 
 ldapsearch $ldapargs $filter | \
-  sed -e '/^dn.*/d' -e '/^$/d' -e 's/^uid: \(.*\)/\1/' > \
-  $(echo $umg | sed -e 's/\//_/g')-$today
+  sed -e '/^dn.*/d' -e '/^$/d' -e 's/^uid: \(.*\)/\1/' > $output
 result=$?
 
 echo -n "Backup of $umg: "
