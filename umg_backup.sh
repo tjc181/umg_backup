@@ -14,7 +14,9 @@ then
   exit 99
 fi
 
-ldapsearch $ldapargs $filter | egrep -v '^(dn|$)' | cut -d: -f2 | sed -e 's/^ //' > $(echo $umg | sed -e 's/\//_/g')-$today
+ldapsearch $ldapargs $filter | \
+  sed -e '/^dn.*/d' -e '/^$/d' -e 's/^uid: \(.*\)/\1/' > \
+  $(echo $umg | sed -e 's/\//_/g')-$today
 result=$?
 
 echo -n "Backup of $umg: "
