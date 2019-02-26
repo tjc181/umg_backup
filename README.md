@@ -5,13 +5,10 @@ Groups (UMG).  These groups are accessible via an LDAP server.
 
 ## Usage
 
-sh umg_backup.sh [-q] group
-                      -----
-
-_-q_  Quiet, don't print anything to standard out.
+sh umg_backup.sh group
+                 -----
 
 ## Output and return code
 
-The script reports success or failure to standard out unless _-q_
-is specified.  The script returns 0 on success or any positive value
-on failure.
+The script reports success or failure to standard out.  The script
+returns 0 on success or any positive value on failure.
