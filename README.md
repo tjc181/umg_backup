@@ -5,7 +5,7 @@ Groups (UMG).  These groups are accessible via an LDAP server.
 
 ## Usage
 
-sh umg_backup.sh group
+sh umg_backup.sh group [group] ...
 
 ## Output and return code
 
