@@ -15,7 +15,7 @@ for node in $NODES
 do
     echo
     echo "Expiration processing: $node..."
-        find $BKDIR/$node -type d -maxdepth 1 -ctime +$EXPTIME -print -exec rm -r {} \;
+        find $BKDIR/$node -maxdepth 1 -type f -ctime +$EXPTIME -print -exec rm -r {} \;
     echo "Completed processing: $node"
     echo
 done
