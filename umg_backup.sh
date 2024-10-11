@@ -17,7 +17,7 @@ fi
 for umg in "$@"
 do
   filter="$ldapattr=cn=$umg,$ldapbase uid"
-  output="/home/geosc/tjc181/backup/umg/$(echo $umg | sed -e 's/\//_/g')-$today"
+  output="$HOME/backup/umg/$(echo $umg | sed -e 's/\//_/g')-$today"
   ldapsearch $ldapargs $filter | \
     sed -e '/^dn.*/d' -e '/^$/d' -e 's/^uid: \(.*\)/\1/' > $output
   result=$?
